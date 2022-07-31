@@ -1,0 +1,123 @@
+* {
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.hidden {
+
+    visibility: hidden;
+
+}
+
+.game {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 48px 0;
+
+}
+
+#game-state {
+
+    height: 3rem;
+    margin: 0 0 2rem 0;
+    font-size: 2.5rem;
+
+}
+
+.game-board {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: solid 2px black; 
+
+}
+
+.game-cell {
+
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px black;
+    font-size: 12rem;
+    user-select: none;
+
+}
+
+.game-cell:hover {
+
+    background-color: white;
+    filter: brightness(95%);
+
+}
+
+.game-info {
+
+    height: 36rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 0 0 4rem;
+
+}
+
+.game-scores {
+
+    margin: 0 0 1.5rem 0;
+
+}
+
+.game-info p {
+
+    font-size: 2rem;
+    line-height: 1.5;
+    vertical-align: middle;
+
+}
+
+.game-info label {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 1.5;
+    vertical-align: middle;
+
+}
+
+.game-info input[type="checkbox"] {
+
+    height: 2rem;
+    width: 2rem;
+    margin: 0 0 0 0.5rem;
+
+}
+
+.game-info button {
+
+    height: 3rem;
+    margin: 0.8rem 0 0 0;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.4rem;
+
+}
