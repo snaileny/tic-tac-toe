@@ -100,7 +100,6 @@ class Game {
 
     resetGame() {
 
-        this.rounds = 5;
         this.resetBoard();
         this.playerFirst.setScore(0);
         this.playerSecond.setScore(0);
@@ -127,7 +126,7 @@ class Game {
 
         const move = this.tickBoard(index, this.turn);
     
-        if (move && this.rounds > 0) {
+        if (move) {
 
             const result = this.checkResult();
 
@@ -135,13 +134,11 @@ class Game {
 
                 if (result === this.X) {
 
-                    this.rounds--;
                     this.playerFirst.addScore();
                     this.setGameState("Player 1 won!");
     
                 } else if (result === this.O)  {
 
-                    this.rounds--;
                     this.playerSecond.addScore();
                     this.setGameState("Player 2 won!");
     
@@ -153,7 +150,6 @@ class Game {
 
                 this.enabled = false;
                 this.checkGameEnd();
-                setTimeout(() => {this.resetBoard();}, 1500);
 
             } else {
 
@@ -161,10 +157,6 @@ class Game {
                 return true;
 
             }
-
-        } else {
-
-            return false;
 
         }
 
@@ -205,20 +197,20 @@ class Game {
 
     checkGameEnd() {
 
-        if (this.rounds === 0) {
+        if (this.playerFirst.score === this.rounds) {
 
-            if (this.playerFirst.score > this.playerSecond.score) {
-
-                this.setGameState("Player 1 has won the game!");
-
-            } else {
-
-                this.setGameState("Player 2 has won the game!")
-
-            }
-
+            this.setGameState("Player 1 has won the game!");
             setTimeout(() => {this.resetGame();}, 2000);
-        
+
+        } else if (this.playerSecond.score === this.rounds) {
+
+            this.setGameState("Player 2 has won the game!")
+            setTimeout(() => {this.resetGame();}, 2000);
+
+        } else {
+
+            setTimeout(() => {this.resetBoard();}, 1500);
+
         }
 
     }
@@ -240,7 +232,7 @@ function init() {
 
     const playerFirst = new Player(0, elements.playerFirstScore);
     const playerSecond = new Player(0, elements.playerSecondScore);
-    const game = new Game(2, playerFirst, playerSecond, elements.gameState, elements.gameCellArray);
+    const game = new Game(5, playerFirst, playerSecond, elements.gameState, elements.gameCellArray);
 
     elements.gameCellArray.forEach(cell => {
 
